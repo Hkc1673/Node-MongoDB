@@ -1,0 +1,24 @@
+{
+  "name": "Node-MongoDB",
+  "version": "1.0.0",
+  "description": "Mern-Stack project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hkc1673/Node-MongoDB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hkc1673/Node-MongoDB/issues"
+  },
+  "homepage": "https://github.com/Hkc1673/Node-MongoDB#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
