@@ -1,28 +1,14 @@
-const express =  require("express");
+const express = require("express");
 
 const router = express.Router();
+const AuthRouter = require("./AuthRouter");
 
-router.get("/", (reg, res) => {
-    console.log("Home Page")
-    res.send("Home")
-});
+// Only /api endpoint
 
-router.get("/api", (reg, res) => {
-    console.log("Api")
-    res.send("Api")
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * @route /api/auth
+ * @desc Route for Auth
+ */
+router.use("/auth", AuthRouter);
 
 module.exports = router;
