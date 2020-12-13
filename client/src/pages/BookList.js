@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MediaCard } from "../components/MediaCard";
 import { Tag } from "antd";
+import { fetchData } from "../helper/FetchData";
+
 const { CheckableTag } = Tag;
 
 const tagsData = ["Any", "Animals", "Arch", "Nature", "People", "Tech"];
 
 const BookList = () => {
   const [selectedTag, setSelectedTag] = useState(["Any"]);
+  const [bookList, setBookList] = useState([]);
+
+  useEffect(() => {
+    fetchData("/api/books").then((data) => {
+      setBookList(data?.bookList);
+    });
+  }, []);
 
   const handleChange = (tag, checked) => {
     const nextSelectedTag = checked ? tag : "Any";
@@ -26,12 +35,23 @@ const BookList = () => {
           </CheckableTag>
         ))}
       </div>
-
-      <MediaCard
-        title="Test"
-        description="lorem ipsum doner lit aasf adfas asdf ij iasd i"
-        imgSrc="http://placeimg.com/140/200/animals"
-      />
+      <div className="book-context">
+        <div className="book-list-wrapper">
+          {bookList?.length > 0
+            ? bookList.map((book) => {
+                return (
+                  <MediaCard
+                    title={book?.title}
+                    description={book?.author}
+                    imgSrc={`http://placeimg.com/140/200/${
+                      book?.category || "any"
+                    }`}
+                  />
+                );
+              })
+            : null}
+        </div>
+      </div>
     </div>
   );
 };
