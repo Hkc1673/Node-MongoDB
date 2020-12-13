@@ -11,9 +11,10 @@ exports.getBookList = async (req, res) => {
 };
 
 exports.getBookDetails = async (req, res) => {
+  
   try {
     const BookDetails = await Book.findOne({
-      _id: req.params.id,
+      _id:req.params.id,
     });
 
     if (!BookDetails) {
